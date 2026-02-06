@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    height:100vh;
+    background:linear-gradient(120deg,#ff758c,#ff7eb3,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:'Poppins',sans-serif;
+}
+
+/* animated text */
+h1{
+    font-size:55px;
+    text-align:center;
+    background:linear-gradient(90deg,#fff,#ff0000,#fff);
+    background-size:200% auto;
+    color:transparent;
+    background-clip:text;
+    -webkit-background-clip:text;
+    animation:shine 3s linear infinite, float 3s ease-in-out infinite;
+    z-index:10;
+}
+
+@keyframes shine{
+    to{ background-position:200% center;}
+}
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* photo block */
+.photo-box{
+    width:220px;
+    height:220px;
+    border-radius:20px;
+    overflow:hidden;
+    border:4px solid white;
+    box-shadow:0 0 25px pink;
+    margin:20px;
+    z-index:10;
+}
+.photo-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* button */
+button{
+    padding:14px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4b5c;
+    cursor:pointer;
+    box-shadow:0 0 15px pink;
+    transition:0.3s;
+    z-index:10;
+}
+button:hover{
+    transform:scale(1.1);
+    background:#ff4b5c;
+    color:white;
+}
+
+/* falling */
+.drop{
+    position:absolute;
+    top:-50px;
+    font-size:28px;
+    animation:fall linear infinite;
+}
+@keyframes fall{
+    0%{transform:translateY(-50px) rotate(0deg);}
+    100%{transform:translateY(100vh) rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌹 Happy Rose Day<br>maleya jaan 💖</h1>
+
+<!-- PHOTO HERE -->
+<div class="photo-box">
+    <img src="yourphoto.jpg" alt="love">
+</div>
+
+<button onclick="moreRoses()">Click for more roses 🌹</button>
+
+<!-- music -->
+<audio autoplay loop>
+ <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
+
+<script>
+createRain(40);
+
+function createRain(num){
+    for(let i=0;i<num;i++){
+        let drop=document.createElement("div");
+        drop.classList.add("drop");
+
+        let items=["🌹","❤️","💖","💘"];
+        drop.innerHTML=items[Math.floor(Math.random()*items.length)];
+
+        drop.style.left=Math.random()*100+"vw";
+        drop.style.animationDuration=(3+Math.random()*5)+"s";
+        drop.style.fontSize=(20+Math.random()*30)+"px";
+
+        document.body.appendChild(drop);
+    }
+}
+
+function moreRoses(){
+    createRain(80);
+}
+</script>
+
+</body>
+</html>
